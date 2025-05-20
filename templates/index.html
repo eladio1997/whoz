@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whoz - Professional Face Recognition</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner">
+            <div class="spinner-circle"></div>
+            <div class="spinner-text">Analyzing Faces</div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="/static/images/logo.svg" alt="Whoz Logo">
+                <span>Whoz</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Advanced Face Recognition</h1>
+                <p class="hero-subtitle">Identify faces with professional-grade accuracy powered by deep learning</p>
+                <div class="upload-container" id="uploadContainer">
+                    <div class="upload-box" id="uploadBox">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Upload a photo</h3>
+                        <p>Drag & drop or click to browse</p>
+                        <input type="file" id="fileInput" accept="image/*">
+                        <label for="fileInput" class="btn btn-primary">Select Image</label>
+                    </div>
+                    <div class="upload-requirements">
+                        <p><i class="fas fa-info-circle"></i> For best results, use clear frontal face photos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-cards">
+                    <div class="card card-1">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Sample face">
+                    </div>
+                    <div class="card card-2">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Sample face">
+                    </div>
+                    <div class="card card-3">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Sample face">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="results-section" id="resultsSection">
+        <div class="container">
+            <div class="results-container hidden" id="resultsContainer">
+                <div class="results-header">
+                    <h2>Recognition Results</h2>
+                    <button class="btn btn-close" id="closeResults">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="results-content">
+                    <div class="uploaded-image-container">
+                        <h3>Your Upload</h3>
+                        <div class="image-preview" id="uploadedImagePreview"></div>
+                    </div>
+                    <div class="match-result">
+                        <div class="confidence-meter">
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="confidenceMeter"></div>
+                            </div>
+                            <div class="confidence-value" id="confidenceValue">0%</div>
+                        </div>
+                        <div class="matched-image-container">
+                            <h3>Matched Profile</h3>
+                            <div class="image-preview" id="matchedImagePreview"></div>
+                            <div class="match-details">
+                                <h4 id="matchedFileName">No match found</h4>
+                                <p class="match-score" id="matchScoreText">Similarity: 0%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="error-container hidden" id="errorContainer">
+                <div class="error-content">
+                    <i class="fas fa-exclamation-triangle error-icon"></i>
+                    <h3 id="errorTitle">Face Detection Failed</h3>
+                    <p id="errorMessage">We couldn't detect a face in your photo. Please try again with a clearer image.</p>
+                    <button class="btn btn-primary" id="tryAgainBtn">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Advanced Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Secure Recognition</h3>
+                    <p>Military-grade encryption ensures your biometric data remains private and secure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Real-Time Processing</h3>
+                    <p>Get results in milliseconds with our optimized deep learning models.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Custom Thresholds</h3>
+                    <p>Adjust sensitivity and matching thresholds to meet your specific needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How Whoz Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Image</h3>
+                        <p>Provide a clear photo containing a face you want to identify.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Face Detection</h3>
+                        <p>Our system locates and extracts facial features with precision.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Deep Matching</h3>
+                        <p>Advanced neural networks compare against known faces.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Get Results</h3>
+                        <p>Receive match confidence scores and visual confirmation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="/static/images/logo.svg" alt="Whoz Logo">
+                        <span>Whoz</span>
+                    </a>
+                    <p>Professional face recognition for security and identification applications.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@whoz.ai</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Whoz Technologies. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

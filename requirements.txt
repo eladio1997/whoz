@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+deepface
+opencv-python-headless
+tensorflow==2.11.0  # Or lower version compatible with Render
